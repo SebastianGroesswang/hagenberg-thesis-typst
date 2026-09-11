@@ -2,12 +2,8 @@
 
 ["fix:format"]
 description = "Fix the formatting of the code"
-run = [
-    {task = "fmt", env = {FMT_CHECK_ONLY = "false"}},
-]
+depends = ["FMT_CHECK_ONLY=false fmt:?*"]
 
 ["fix"]
 description = "Fix all the code, ensure all guidelines"
-run = [
-    {task = "fix:format"},
-]
+depends = ["fix:format"]

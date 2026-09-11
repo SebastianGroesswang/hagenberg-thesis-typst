@@ -32,7 +32,7 @@ run = [
 
 [tasks."publish:prepare"]
 description = "Prepare the project for publication"
-depends = ["fmt", "build:thumbnails", "build:manual", "check:template-compilable"]
+depends = ["fix", "build:thumbnails", "build:manual", "check"]
 
 [tasks."publish:copy-to"]
 description = "Publish the project by copying to a target destination"

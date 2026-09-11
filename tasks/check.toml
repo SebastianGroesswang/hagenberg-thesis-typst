@@ -2,9 +2,7 @@
 
 ["check:format"]
 description = "Check the formatting of the code"
-run = [
-    {task = "fmt", env = {FMT_CHECK_ONLY = "true"}},
-]
+depends = ["FMT_CHECK_ONLY=true fmt:?*"]
 
 ["check:template-compilable"]
 description = "Check if the template is compilable"
@@ -15,7 +13,4 @@ run = [
 
 ["check"]
 description = "Check the code"
-run = [
-    {task = "check:format"},
-    {task = "check:template-compilable"},
-]
+depends = ["check:format", "check:template-compilable"]
