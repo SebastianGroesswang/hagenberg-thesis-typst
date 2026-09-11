@@ -1,0 +1,20 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+["fmt:typst"]
+description = "Format the typst code"
+usage = """
+flag "--check" env="FMT_CHECK_ONLY" help="Only check if the code is formatted"
+"""
+run = [
+    "typstyle {{'--diff' if usage.check else '-i'}} ./*.typ ./components/*.typ ./template/**/*.typ ./thumbnail/*.typ ./manual/*.typ --timing"
+]
+
+["fmt:lines"]
+description = "Enforce the newline and whitespace rules"
+usage = """
+flag "--check" env="FMT_CHECK_ONLY" help="Only check if the code is formatted"
+"""
+tools."cargo:lineguard" = { version = "0.2.1" }
+run = """
+lineguard . -r{{' --fix' if not usage.check else ''}}
+"""

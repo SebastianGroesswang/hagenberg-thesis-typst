@@ -1,0 +1,16 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+["check:format"]
+description = "Check the formatting of the code"
+depends = ["FMT_CHECK_ONLY=true fmt:?*"]
+
+["check:template-compilable"]
+description = "Check if the template is compilable"
+depends = ["setup:editable-package"]
+run = [
+    "typst compile -f pdf --pdf-standard a-3u template/main.typ - > /dev/null",
+]
+
+["check"]
+description = "Check the code"
+depends = ["check:format", "check:template-compilable"]
