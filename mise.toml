@@ -7,21 +7,9 @@ TYPST_ROOT = "{{config_root}}"
 TYPST_FONT_PATHS = "{{config_root}}/template/fonts"
 TYPST_PACKAGE_PATH = "{{config_root}}/local-packages/"
 
-[tasks."fmt:typst"]
-description = "Format the typst code"
-run = [
-    "typstyle -i ./*.typ ./components/*.typ ./template/**/*.typ ./thumbnail/*.typ ./manual/*.typ --timing"
-]
-
-[tasks.fmt]
-description = "Apply projectwide formatting"
-depends = ["fmt:?*"]
-
-[tasks."check:template-compilable"]
-description = "Check if the template is compilable"
-depends = ["setup:editable-package"]
-run = [
-    "typst compile -f pdf --pdf-standard a-3u template/main.typ - > /dev/null",
+[task_config]
+includes = [
+    "tasks/**/*.toml"
 ]
 
 [tasks."build:thumbnails"]

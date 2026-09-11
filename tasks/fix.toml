@@ -1,0 +1,13 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+["fix:format"]
+description = "Fix the formatting of the code"
+run = [
+    {task = "fmt", env = {FMT_CHECK_ONLY = "false"}},
+]
+
+["fix"]
+description = "Fix all the code, ensure all guidelines"
+run = [
+    {task = "fix:format"},
+]

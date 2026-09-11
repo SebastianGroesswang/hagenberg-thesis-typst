@@ -19,6 +19,7 @@ tests/
 Makefile
 scripts/
 /mise.toml
+tasks/
 /packages
 /local-packages
 
