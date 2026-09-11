@@ -19,5 +19,3 @@ run = [
     {task = "check:format"},
     {task = "check:template-compilable"},
 ]
-
-

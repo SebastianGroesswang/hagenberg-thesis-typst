@@ -2,7 +2,7 @@
 <!-- What changed and why. Keep short. -->
 
 ## Changes
-- 
+-
 
 ## Checklist
 - [ ] Update `CHANGELOG.md` under `[Unreleased]`

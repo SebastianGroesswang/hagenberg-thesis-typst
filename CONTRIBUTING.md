@@ -70,4 +70,3 @@ Typst Universe enforces strict package archive size limits.
 `.publishignore` filters files during package sync (`mise run publish`).
 Rule: Keep package bundle minimal. Only ship library code, template files, and required assets.
 If adding dev tools, tests, scratch files, or large assets: ensure `.publishignore` excludes them.
-
