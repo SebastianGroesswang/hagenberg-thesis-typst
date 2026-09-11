@@ -63,3 +63,11 @@ mise run setup:local-packages
 - `components/` — template API, sections, i18n, and default styles
 - `template/` — `typst init` scaffold and runnable example
 - `typst.toml` — package name, version, compiler requirement, and template metadata
+
+### Package publishing and `.publishignore`
+
+Typst Universe enforces strict package archive size limits.
+`.publishignore` filters files during package sync (`mise run publish`).
+Rule: Keep package bundle minimal. Only ship library code, template files, and required assets.
+If adding dev tools, tests, scratch files, or large assets: ensure `.publishignore` excludes them.
+

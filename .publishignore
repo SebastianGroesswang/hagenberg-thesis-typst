@@ -12,6 +12,8 @@ thumbnail/
 manual/
 
 # Exclude development/IDE config
+.github/
+.agents/
 .vscode/
 tests/
 Makefile
@@ -19,6 +21,10 @@ scripts/
 /mise.toml
 /packages
 /local-packages
+
+# Exclude documentation only
+CHANGELOG.md
+CONTRIBUTING.md
 
 # Exclude the ignore file itself
 .publishignore
