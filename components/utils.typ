@@ -74,3 +74,26 @@
     return next-pre-heading.location()
   }
 }
+
+#let is-appendix = state("_eht-is-appendix", false)
+
+#let hierarchical-numbering(n, loc: none, fmt-style: "1.1") = context {
+  let at-loc = if loc != none { loc } else { here() }
+  let h1 = counter(heading).at(at-loc).first()
+  let app = is-appendix.at(at-loc)
+  let prefix = if h1 == 0 {
+    none
+  } else if app {
+    numbering("A", h1)
+  } else {
+    str(h1)
+  }
+
+  if fmt-style == "(1.1)" {
+    if prefix == none { "(" + str(n) + ")" } else {
+      "(" + prefix + "." + str(n) + ")"
+    }
+  } else {
+    if prefix == none { str(n) } else { prefix + "." + str(n) }
+  }
+}

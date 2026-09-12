@@ -8,6 +8,9 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+- Hierarchical per-chapter numbering for figures, tables, code listings, and equations (`1.1` in main content, `A.1` in appendix)
+- Localized reference supplements and abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`)
+- Outlines and cross-references accurately resolve hierarchical chapter numbers from element site
 - Classic chapter outline shows acknowledgment
 - Classic style includes abbreviations inside appendix
 

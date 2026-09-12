@@ -127,6 +127,34 @@
     de: "Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt.",
     en: "I hereby declare and confirm that this thesis is entirely the result of my own original work. Where other sources of information have been used, they have been indicated as such and properly acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.",
   ),
+  "ref-figure": (
+    de: "Abb.",
+    en: "Fig.",
+  ),
+  "ref-table": (
+    de: "Tab.",
+    en: "Table",
+  ),
+  "ref-equation": (
+    de: "Gl.",
+    en: "Equation",
+  ),
+  "ref-listing": (
+    de: "Prog.",
+    en: "Listing",
+  ),
+  "ref-chapter": (
+    de: "Kapitel",
+    en: "Chapter",
+  ),
+  "ref-section": (
+    de: "Abschnitt",
+    en: "Section",
+  ),
+  "ref-appendix": (
+    de: "Anhang",
+    en: "Appendix",
+  ),
 )
 
 #let i18n-translation(key, lang) = {
@@ -171,4 +199,34 @@
   ] else [
     #date.display("[month repr:long] [day], [year]")
   ]
+}
+
+#let ref-supplement(it) = context {
+  let lang = text.lang
+  let type = it.func()
+  if type == math.equation {
+    i18n-translation("ref-equation", lang)
+  } else if type == figure {
+    if it.kind == image {
+      i18n-translation("ref-figure", lang)
+    } else if it.kind == table {
+      i18n-translation("ref-table", lang)
+    } else if it.kind == raw {
+      i18n-translation("ref-listing", lang)
+    } else {
+      it.supplement
+    }
+  } else if type == heading {
+    if it.level == 1 {
+      if it.supplement == i18n-translation("appendix", lang) {
+        i18n-translation("ref-appendix", lang)
+      } else {
+        i18n-translation("ref-chapter", lang)
+      }
+    } else {
+      i18n-translation("ref-section", lang)
+    }
+  } else {
+    auto
+  }
 }
