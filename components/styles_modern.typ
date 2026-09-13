@@ -131,8 +131,6 @@
   set page(numbering: "1")
   counter(page).update(1)
 
-  is-appendix.update(false)
-
   // Reset figure and math counters per chapter
   show heading.where(level: 1): it => {
     counter(figure.where(kind: image)).update(0)
@@ -282,8 +280,6 @@
 
 /// This style is applied to the appendix section.
 #let appendix-style(doc) = {
-  is-appendix.update(true)
-
   counter(figure.where(kind: image)).update(0)
   counter(figure.where(kind: table)).update(0)
   counter(figure.where(kind: raw)).update(0)
