@@ -432,13 +432,9 @@ You will find a list of my personal recommended and useful third party Typst pac
 ]
 
 #package-recommend(
-  "zero",
-  "https://typst.app/universe/package/zero",
-)[configurable scientific number formatting; basically a requirement for scientific writing]
-#package-recommend(
   "cetz",
   "https://typst.app/universe/package/cetz",
-  "semi-low-level drawing library, very powerful; often foundation for other drawing packages",
+  "drawing and plotting library; very powerful and versatile, often the foundation for other diagram packages",
 )
 #package-recommend(
   "fletcher",
@@ -448,6 +444,30 @@ You will find a list of my personal recommended and useful third party Typst pac
   "lilaq",
   "https://typst.app/universe/package/lilaq",
 )[easy to use plotting library with sane defaults and lots of customization options]
+#package-recommend(
+  "bytefield",
+  "https://typst.app/universe/package/bytefield",
+)[network protocol headers, packet structures, and memory byte/bit layout diagrams]
+#package-recommend(
+  "digidraw",
+  "https://typst.app/universe/package/digidraw",
+)[digital timing diagrams and digital logic waveforms]
+#package-recommend(
+  "booktabs",
+  "https://typst.app/universe/package/booktabs",
+)[clean, publication-quality tables using toprule, midrule, and bottomrule rules]
+#package-recommend(
+  "zero",
+  "https://typst.app/universe/package/zero",
+)[configurable scientific number formatting; basically a requirement for scientific writing]
+#package-recommend(
+  "fancy-units",
+  "https://typst.app/universe/package/fancy-units",
+)[typesetting physical quantities, numbers with units, and SI notation]
+#package-recommend(
+  "lovelace",
+  "https://typst.app/universe/package/lovelace",
+)[algorithm pseudocode typesetting with line numbering and customizable syntax]
 #package-recommend(
   "codly",
   "https://typst.app/universe/package/codly",
