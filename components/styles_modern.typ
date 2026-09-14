@@ -165,11 +165,7 @@
 
 #let _outline-entry(entry, logical-level: none) = {
   if logical-level == none {
-    if entry.element.func() == heading {
-      logical-level = entry.element.level
-    } else {
-      logical-level = 2
-    }
+    logical-level = entry.element.level
   }
   let element-location = entry.element.location()
   if entry.element.func() == heading and entry.element.level == 1 {
@@ -208,12 +204,12 @@
 
 /// This style is applied to the figure outline.
 #let figure-outline-style(doc) = {
-  show outline.entry: _outline-entry
+  show outline.entry: _outline-entry.with(logical-level: 2)
   doc
 }
 
 #let table-outline-style(doc) = {
-  show outline.entry: _outline-entry
+  show outline.entry: _outline-entry.with(logical-level: 2)
   doc
 }
 
@@ -239,6 +235,9 @@
 
   // Arabic for text sections = appendix
   set page(numbering: "1")
+
+  set figure(numbering: (..n) => [A.#numbering("1", ..n)])
+  set math.equation(numbering: (..n) => [(A.#numbering("1", ..n))])
 
   doc
 }
