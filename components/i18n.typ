@@ -147,25 +147,41 @@
     de: "Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt. Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.",
     en: "I hereby declare and confirm that this thesis is entirely the result of my own original work. Where other sources of information have been used, they have been indicated as such and properly acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere. This printed copy is identical to the submitted electronic version.",
   ),
+  "figure": (
+    de: "Abbildung",
+    en: "Figure",
+  ),
+  "table": (
+    de: "Tabelle",
+    en: "Table",
+  ),
+  "raw": (
+    de: "Programm",
+    en: "Program",
+  ),
+  "equation": (
+    de: "Gleichung",
+    en: "Equation",
+  ),
   "ref-figure": (
     de: "Abb.",
     en: "Fig.",
   ),
   "ref-table": (
     de: "Tab.",
-    en: "Table",
+    en: "Tab.",
   ),
   "ref-raw": (
     de: "Prog.",
-    en: "Listing",
+    en: "Prog.",
   ),
   "ref-equation": (
     de: "Gl.",
-    en: "Equation",
+    en: "Eq.",
   ),
-  "section": (
-    de: "Abschnitt",
-    en: "Section",
+  "ref-section": (
+    de: "Abschn.",
+    en: "Sec.",
   ),
   "abbreviations-table-caption": (
     de: "Abkürzungsverzeichnis",
