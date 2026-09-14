@@ -75,26 +75,6 @@
   }
 }
 
-#let chapter-prefix(loc) = {
-  let prev-h = query(heading.where(level: 1).before(loc))
-  if prev-h.len() == 0 {
-    return none
-  }
-  let h = prev-h.last()
-  if h.numbering == none {
-    return none
-  }
-  let h1-num = counter(heading).at(h.location()).first()
-  if h1-num == 0 {
-    return none
-  }
-  if type(h.numbering) == str {
-    numbering(h.numbering, h1-num)
-  } else {
-    (h.numbering)(h1-num)
-  }
-}
-
 #let hierarchical-numbering(style, levels: 1) = (..ns) => {
   numbering(style, ..counter(heading).get().chunks(levels).first(), ..ns)
 }
