@@ -4,11 +4,26 @@
 /// This style is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (top: 6.7cm, bottom: 2.5cm, rest: 3.25cm))
-  set par(justify: true)
   set text(font: ("New Computer Modern", "Times New Roman"), size: 12pt)
   show raw: set text(font: ("LMMono10", "DejaVu Sans Mono", "Courier New"))
-  show footnote: set text(size: 0.8em)
+  show math.equation: set text(font: (
+    "LMMono10",
+    "DejaVu Sans Mono",
+    "Courier New",
+  ))
+  set par(
+    justify: true,
+    first-line-indent: 1.5em,
+    spacing: 0.8em,
+    linebreaks: "optimized",
+    justification-limits: (
+      tracking: (min: -0.05em, max: 0.05em),
+    ),
+  )
+  show figure: set block(spacing: 1.75em)
+  show math.equation: set block(spacing: 1.75em)
   show: line-spacing.with(1.25em)
+  show footnote: set text(size: 0.8em)
   show figure.where(kind: table): set figure.caption(position: top)
 
   show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
@@ -61,9 +76,6 @@
   show heading.where(level: 1): set block(inset: (bottom: 1.5cm))
   show heading: apply-sans-font
   show heading: set text(weight: "regular")
-
-  // Typography
-  set par(spacing: 2em)
 
   doc
 }
