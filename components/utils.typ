@@ -95,12 +95,13 @@
   }
 }
 
-#let hierarchical-numbering(n, loc: none, fmt-style: "1.1") = context {
-  let at-loc = if loc != none { loc } else { here() }
-  let prefix = chapter-prefix(at-loc)
-  if prefix == none {
-    if fmt-style == "(1.1)" { [(#n)] } else { [#n] }
-  } else {
-    if fmt-style == "(1.1)" { [(#prefix.#n)] } else { [#prefix.#n] }
-  }
+#let hierarchical-numbering(style, levels: 1) = (..ns) => {
+  numbering(style, ..counter(heading).get().chunks(levels).first(), ..ns)
+}
+
+#let reset-listing-counters(value: 0) = {
+  counter(figure.where(kind: image)).update(value)
+  counter(figure.where(kind: table)).update(value)
+  counter(figure.where(kind: raw)).update(value)
+  counter(math.equation).update(value)
 }

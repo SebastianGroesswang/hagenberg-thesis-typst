@@ -135,25 +135,21 @@
     de: "Tab.",
     en: "Table",
   ),
+  "ref-raw": (
+    de: "Prog.",
+    en: "Listing",
+  ),
   "ref-equation": (
     de: "Gl.",
     en: "Equation",
   ),
-  "ref-listing": (
-    de: "Prog.",
-    en: "Listing",
-  ),
-  "ref-chapter": (
-    de: "Kapitel",
-    en: "Chapter",
-  ),
-  "ref-section": (
+  "section": (
     de: "Abschnitt",
     en: "Section",
   ),
-  "ref-appendix": (
-    de: "Anhang",
-    en: "Appendix",
+  "abbreviations-table-caption": (
+    de: "Abkürzungsverzeichnis",
+    en: "List of abbreviations",
   ),
 )
 
@@ -199,34 +195,4 @@
   ] else [
     #date.display("[month repr:long] [day], [year]")
   ]
-}
-
-#let ref-supplement(it) = context {
-  let lang = text.lang
-  let type = it.func()
-  if type == math.equation {
-    i18n-translation("ref-equation", lang)
-  } else if type == figure {
-    if it.kind == image {
-      i18n-translation("ref-figure", lang)
-    } else if it.kind == table {
-      i18n-translation("ref-table", lang)
-    } else if it.kind == raw {
-      i18n-translation("ref-listing", lang)
-    } else {
-      it.supplement
-    }
-  } else if type == heading {
-    if it.level == 1 {
-      if it.supplement == i18n-translation("appendix", lang) {
-        i18n-translation("ref-appendix", lang)
-      } else {
-        i18n-translation("ref-chapter", lang)
-      }
-    } else {
-      i18n-translation("ref-section", lang)
-    }
-  } else {
-    auto
-  }
 }

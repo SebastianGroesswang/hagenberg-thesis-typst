@@ -1,7 +1,7 @@
-#import "i18n.typ": i18n, i18n-page-counter, i18n-translation, ref-supplement
+#import "i18n.typ": i18n, i18n-page-counter, i18n-translation
 #import "utils.typ": *
 
-/// This stile is applied to the entire project.
+/// This style is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (top: 6.7cm, bottom: 2.5cm, rest: 3.25cm))
   set text(font: "Times New Roman", size: 12pt)
@@ -9,6 +9,13 @@
   show footnote: set text(size: 0.8em)
   show: line-spacing.with(1.25em)
   show figure.where(kind: table): set figure.caption(position: top)
+
+  show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
+  show figure.where(kind: table): set figure(supplement: i18n("ref-table"))
+  show figure.where(kind: raw): set figure(supplement: i18n("ref-raw"))
+  show math.equation: set math.equation(supplement: i18n("ref-equation"))
+  set heading(supplement: i18n("section"))
+
   doc
 }
 
@@ -41,7 +48,7 @@
   set page(numbering: "i")
 
   // Setup headings
-  set heading(numbering: none)
+  set heading(numbering: none, supplement: i18n("section"))
   // Default heading style for the whole document
   show heading.where(level: 1): set text(size: 1.6em)
   show heading.where(level: 2): set text(size: 1.25em)
@@ -56,44 +63,6 @@
 
   // Typography
   set par(spacing: 2em)
-
-  // Hierarchical numbering and localized supplements
-  set figure(numbering: (n, ..) => hierarchical-numbering(n))
-  set math.equation(numbering: (n, ..) => hierarchical-numbering(
-    n,
-    fmt-style: "(1.1)",
-  ))
-  show ref.where(form: "normal"): set ref(supplement: ref-supplement)
-  show ref: it => {
-    if it.element != none {
-      let el = it.element
-      let el-loc = el.location()
-      let supp = if type(it.supplement) == function {
-        (it.supplement)(el)
-      } else if it.supplement == auto {
-        ref-supplement(el)
-      } else {
-        it.supplement
-      }
-      if el.func() == figure {
-        let fig-num = counter(figure.where(kind: el.kind)).at(el-loc).first()
-        let num-str = hierarchical-numbering(fig-num, loc: el-loc)
-        link(el-loc, [#supp~#num-str])
-      } else if el.func() == math.equation {
-        let eq-num = counter(math.equation).at(el-loc).first()
-        let num-str = hierarchical-numbering(
-          eq-num,
-          loc: el-loc,
-          fmt-style: "(1.1)",
-        )
-        link(el-loc, [#supp~#num-str])
-      } else {
-        it
-      }
-    } else {
-      it
-    }
-  }
 
   doc
 }
@@ -127,36 +96,21 @@
     element-location = nearest-top-level-heading(element-location)
   }
 
-  let prefix = if entry.element.func() == figure {
-    let el = entry.element
-    let el-loc = el.location()
-    let fig-num = counter(figure.where(kind: el.kind)).at(el-loc).first()
-    let num-str = hierarchical-numbering(fig-num, loc: el-loc)
-    [#el.supplement #num-str]
-  } else {
-    entry.prefix()
-  }
-
   link(
     element-location,
     {
       let original-font = text.font
       show: if logical-level == 1 { apply-sans-font } else { it => it }
       entry.indented(
-        prefix,
+        entry.prefix(),
         {
           entry.body()
           set text(font: original-font)
           box(width: 1fr, inset: (x: 0.5em), if logical-level != 1 {
             repeat([.], gap: 0.5em)
           })
-          let pg-numbering = if element-location.page-numbering() != none {
-            element-location.page-numbering()
-          } else {
-            "1"
-          }
           numbering(
-            pg-numbering,
+            element-location.page-numbering(),
             ..counter(page).at(element-location),
           )
         },
@@ -172,19 +126,18 @@
   set page(numbering: "1")
   counter(page).update(1)
 
+  // Setup headings
+  show heading.where(level: 1): set heading(supplement: i18n("chapter"))
   // Reset figure and math counters per chapter
   show heading.where(level: 1): it => {
-    counter(figure.where(kind: image)).update(0)
-    counter(figure.where(kind: table)).update(0)
-    counter(figure.where(kind: raw)).update(0)
-    counter(math.equation).update(0)
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
 
-  // Setup headings
-  set heading(supplement: i18n("chapter"))
   show: _pre-top-heading-numbering.with("1.1")
+  set figure(numbering: hierarchical-numbering("1.1"))
+  set math.equation(numbering: hierarchical-numbering("(1.1)"))
 
   doc
 }
@@ -269,17 +222,16 @@
   // Arabic for text sections = appendix
   set page(numbering: "1")
 
-  set heading(supplement: i18n("appendix"))
+  show heading.where(level: 1): set heading(supplement: i18n("appendix"))
   counter(heading).update(0)
   show heading.where(level: 1): it => {
-    counter(figure.where(kind: image)).update(0)
-    counter(figure.where(kind: table)).update(0)
-    counter(figure.where(kind: raw)).update(0)
-    counter(math.equation).update(0)
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
   show: _pre-top-heading-numbering.with("A.1")
+  set figure(numbering: hierarchical-numbering("A.1"))
+  set math.equation(numbering: hierarchical-numbering("(A.1)"))
 
   doc
 }

@@ -1,4 +1,4 @@
-#import "i18n.typ": i18n, i18n-page-counter, i18n-translation, ref-supplement
+#import "i18n.typ": i18n, i18n-page-counter, i18n-translation
 #import "utils.typ": *
 
 /// This stile is applied to the entire project.
@@ -9,6 +9,12 @@
   show footnote: set text(size: 0.8em)
   show: line-spacing.with(1.25em)
   show figure.where(kind: table): set figure.caption(position: top)
+
+  show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
+  show figure.where(kind: table): set figure(supplement: i18n("ref-table"))
+  show figure.where(kind: raw): set figure(supplement: i18n("ref-raw"))
+  show math.equation: set math.equation(supplement: i18n("ref-equation"))
+  set heading(supplement: i18n("section"))
   doc
 }
 
@@ -84,43 +90,9 @@
   // Typography
   set par(spacing: 2em)
 
-  // Hierarchical numbering and localized supplements
-  set figure(numbering: (n, ..) => hierarchical-numbering(n))
-  set math.equation(numbering: (n, ..) => hierarchical-numbering(
-    n,
-    fmt-style: "(1.1)",
-  ))
-  show ref.where(form: "normal"): set ref(supplement: ref-supplement)
-  show ref: it => {
-    if it.element != none {
-      let el = it.element
-      let el-loc = el.location()
-      let supp = if type(it.supplement) == function {
-        (it.supplement)(el)
-      } else if it.supplement == auto {
-        ref-supplement(el)
-      } else {
-        it.supplement
-      }
-      if el.func() == figure {
-        let fig-num = counter(figure.where(kind: el.kind)).at(el-loc).first()
-        let num-str = hierarchical-numbering(fig-num, loc: el-loc)
-        link(el-loc, [#supp~#num-str])
-      } else if el.func() == math.equation {
-        let eq-num = counter(math.equation).at(el-loc).first()
-        let num-str = hierarchical-numbering(
-          eq-num,
-          loc: el-loc,
-          fmt-style: "(1.1)",
-        )
-        link(el-loc, [#supp~#num-str])
-      } else {
-        it
-      }
-    } else {
-      it
-    }
-  }
+  // Hierarchical numbering
+  set figure(numbering: hierarchical-numbering("1.1"))
+  set math.equation(numbering: hierarchical-numbering("(1.1)"))
 
   doc
 }
@@ -133,10 +105,7 @@
 
   // Reset figure and math counters per chapter
   show heading.where(level: 1): it => {
-    counter(figure.where(kind: image)).update(0)
-    counter(figure.where(kind: table)).update(0)
-    counter(figure.where(kind: raw)).update(0)
-    counter(math.equation).update(0)
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
@@ -207,31 +176,15 @@
     element-location = nearest-top-level-heading(element-location)
   }
 
-  let prefix = if entry.element.func() == figure {
-    let el = entry.element
-    let el-loc = el.location()
-    let fig-num = counter(figure.where(kind: el.kind)).at(el-loc).first()
-    let num-str = hierarchical-numbering(fig-num, loc: el-loc)
-    [#el.supplement #num-str]
-  } else {
-    entry.prefix()
-  }
-
-  let pg-numbering = if element-location.page-numbering() != none {
-    element-location.page-numbering()
-  } else {
-    "1"
-  }
-
   link(
     element-location,
     entry.indented(
-      prefix,
+      entry.prefix(),
       {
         entry.body()
         box(entry.fill, width: 1fr, inset: (x: 1mm))
         numbering(
-          pg-numbering,
+          element-location.page-numbering(),
           ..counter(page).at(element-location),
         )
       },
@@ -280,10 +233,7 @@
 
 /// This style is applied to the appendix section.
 #let appendix-style(doc) = {
-  counter(figure.where(kind: image)).update(0)
-  counter(figure.where(kind: table)).update(0)
-  counter(figure.where(kind: raw)).update(0)
-  counter(math.equation).update(0)
+  reset-listing-counters()
 
   set heading(offset: 1)
 

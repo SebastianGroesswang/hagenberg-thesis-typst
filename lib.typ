@@ -7,4 +7,3 @@
   titlepage-section,
 )
 #import "components/constants.typ": THESIS_STYLE, WORK_TYPES
-#import "components/i18n.typ": ref-supplement
