@@ -1,5 +1,6 @@
 #import "i18n.typ": i18n, i18n-date-month-year
 #import "constants.typ": WORK_TYPES
+#import "utils.typ": apply-sans-font
 
 /// Displays the title page of the thesis. Returns a formatted title page as a grid layout. Fonts, spacing, and margins are set for title page aesthetics.
 ///
@@ -44,10 +45,8 @@
     if document.date == auto { datetime.today() } else { document.date }
   } else { submission-date }
 
-  #let base-fonts = if type(text.font) == array { text.font } else {
-    (text.font,)
-  }
-  #set text(font: ("Verdana", "Arial", ..base-fonts), size: 10pt)
+  #set text(size: 10pt)
+  #show: apply-sans-font.with(other-fonts: ("Verdana",))
   #set page(margin: (
     top: 2cm,
     left: 2.5cm,

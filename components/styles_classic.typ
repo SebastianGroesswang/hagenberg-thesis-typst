@@ -4,13 +4,7 @@
 /// This style is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (top: 6.7cm, bottom: 2.5cm, rest: 3.25cm))
-  set text(font: ("New Computer Modern", "Times New Roman"), size: 12pt)
-  show raw: set text(font: ("LMMono10", "DejaVu Sans Mono", "Courier New"))
-  show math.equation: set text(font: (
-    "LMMono10",
-    "DejaVu Sans Mono",
-    "Courier New",
-  ))
+  set text(size: 12pt)
   set par(
     justify: true,
     first-line-indent: 1.5em,

@@ -4,7 +4,8 @@
 /// This stile is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (bottom: 2cm, rest: 2.5cm))
-  set text(font: "Arial", size: 11pt)
+  set text(size: 11pt)
+  show: apply-sans-font
   set par(
     justify: true,
     linebreaks: "optimized",
