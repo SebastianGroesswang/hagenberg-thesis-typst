@@ -248,6 +248,8 @@ Many users might want to change the font from the default base style. For this, 
 #show: full-thesis.with(
   document-style: it => {
     set text(font: "Times New Roman", size: 12pt)
+    show raw: set text(font: "JetBrains Mono")
+    show math.equation: set text(font: "Libertinus Math")
     it
   },
 )
