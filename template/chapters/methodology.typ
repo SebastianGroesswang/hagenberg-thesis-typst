@@ -13,7 +13,7 @@ Reference a:
 // Let's show a small table
 #{
   show: figure.with(
-    caption: [A Small Table to Demonstrate the List of tables and its numbering @demo-cite],
+    caption: [Demonstrate the List of tables and its numbering @demo-cite],
   )
   table(
     columns: 2,

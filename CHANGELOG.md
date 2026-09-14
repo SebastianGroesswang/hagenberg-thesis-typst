@@ -9,7 +9,7 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - Hierarchical per-chapter numbering for figures, tables, code listings, and equations (`1.1` in main content, `A.1` in appendix)
-- Localized caption supplements and reference abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`)
+- Localized caption supplements and reference abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`) ([#10](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/10))
 - Classic chapter outline shows acknowledgment
 - Classic style includes abbreviations inside appendix
 - Optional `copyright-page` with `LICENSE_TYPES` presets (CC BY-NC-ND 4.0, all-rights-reserved) and custom license content ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
@@ -19,6 +19,7 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 - OSS-friendly default sans-serif fonts: `New Computer Modern Sans`, `Libertinus Sans`, `Inter`, `Arial` ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- Figure captions have bold labels and use a grid layout for smart indentation ([#11](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/11))
 - Built-in styles no longer force Times New Roman (classic) or Arial (modern) on body text; serif uses Typst’s default fonts ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
 - Classic and modern styles: tighter academic paragraph and float spacing ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
 
