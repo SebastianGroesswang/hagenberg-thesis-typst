@@ -7,8 +7,7 @@
 Reference a:
 
 - Chapter: @introduction_heading
-- Section: @nested_subheading, @nested_appendix_subheading
-- Appendix: @appendix_heading
+- Section: @nested_subheading
 - Equation: @bayes_theorem
 
 // Let's show a small table
