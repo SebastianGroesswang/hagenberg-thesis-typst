@@ -4,8 +4,9 @@
 /// This style is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (top: 6.7cm, bottom: 2.5cm, rest: 3.25cm))
-  set text(font: "Times New Roman", size: 12pt)
   set par(justify: true)
+  set text(font: ("New Computer Modern", "Times New Roman"), size: 12pt)
+  show raw: set text(font: ("LMMono10", "DejaVu Sans Mono", "Courier New"))
   show footnote: set text(size: 0.8em)
   show: line-spacing.with(1.25em)
   show figure.where(kind: table): set figure.caption(position: top)

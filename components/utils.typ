@@ -12,9 +12,9 @@
 }
 
 #let sans-fonts = state("_eht-sans-fonts", (
-  "verdana",
-  "dejavu sans",
-  "arial",
+  "LMSans10",
+  "Verdana",
+  "Arial",
 ))
 
 #let apply-sans-font(body) = context {
