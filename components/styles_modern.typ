@@ -17,11 +17,49 @@
   show footnote: set text(size: 0.8em)
   show figure.where(kind: table): set figure.caption(position: top)
 
-  show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
-  show figure.where(kind: table): set figure(supplement: i18n("ref-table"))
-  show figure.where(kind: raw): set figure(supplement: i18n("ref-raw"))
-  show math.equation: set math.equation(supplement: i18n("ref-equation"))
-  set heading(supplement: i18n("section"))
+  show figure.where(kind: image): set figure(supplement: i18n("figure"))
+  show figure.where(kind: table): set figure(supplement: i18n("table"))
+  show figure.where(kind: raw): set figure(supplement: i18n("raw"))
+  show math.equation: set math.equation(supplement: i18n("equation"))
+
+  // Setup supplements and formatting of references
+  show ref.where(form: "normal"): set ref(supplement: it => if it.func()
+    == figure {
+    if it.kind == image {
+      i18n("ref-figure")
+    } else if it.kind == table {
+      i18n("ref-table")
+    } else if it.kind == raw {
+      i18n("ref-raw")
+    } else {
+      return it.supplement
+    }
+  } else if it.func() == math.equation {
+    i18n("ref-equation")
+  } else {
+    return it.supplement
+  })
+  show ref.where(form: "normal"): it => {
+    if it.element == none {
+      return it
+    }
+
+    if it.element.func() == math.equation {
+      return link(it.element.location())[
+        #(it.supplement)(it.element)
+        #(
+          (it.element.numbering)(
+            ..counter(math.equation).at(it.element.location()),
+          )
+            .trim("(", at: start)
+            .trim(")", at: end)
+        )
+      ]
+    }
+
+    return it
+  }
+
   doc
 }
 
@@ -91,7 +129,7 @@
   show heading: set block(above: 1.5em, below: 1em)
   show heading.where(level: 1): set block(inset: (top: 0.25em))
   // Default heading style for the whole document
-  set heading(numbering: none)
+  set heading(numbering: none, supplement: i18n("ref-section"))
   show heading: set align(right)
 
   // Typography

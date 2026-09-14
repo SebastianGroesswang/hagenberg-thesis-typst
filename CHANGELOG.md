@@ -9,7 +9,7 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - Hierarchical per-chapter numbering for figures, tables, code listings, and equations (`1.1` in main content, `A.1` in appendix)
-- Localized reference supplements and abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`)
+- Localized caption supplements and reference abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`)
 - Classic chapter outline shows acknowledgment
 - Classic style includes abbreviations inside appendix
 - Optional `copyright-page` with `LICENSE_TYPES` presets (CC BY-NC-ND 4.0, all-rights-reserved) and custom license content ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
