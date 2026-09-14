@@ -16,6 +16,22 @@
   show: line-spacing.with(1.25em)
   show footnote: set text(size: 0.8em)
   show figure.where(kind: table): set figure.caption(position: top)
+  show figure.where(kind: raw): set align(start)
+  show figure.caption: it => {
+    grid(
+      columns: 3,
+      gutter: 0pt,
+      align: left,
+      context {
+        show: strong
+        it.supplement
+        sym.space
+        it.counter.display(it.numbering)
+      },
+      it.separator,
+      it.body,
+    )
+  }
 
   show figure.where(kind: image): set figure(supplement: i18n("figure"))
   show figure.where(kind: table): set figure(supplement: i18n("table"))

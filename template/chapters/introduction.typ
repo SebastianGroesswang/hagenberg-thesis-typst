@@ -7,7 +7,7 @@
 #lorem(10)
 #{
   show: it => [#it <introduction_figure>]
-  show: figure.with(caption: [An Introduction Figure])
+  show: figure.with(caption: [An Introduction Figure with long #lorem(20)])
   show: rect
   lq.diagram(
     lq.plot(
