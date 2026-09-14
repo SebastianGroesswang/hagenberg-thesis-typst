@@ -9,6 +9,12 @@
   show footnote: set text(size: 0.8em)
   show: line-spacing.with(1.25em)
   show figure.where(kind: table): set figure.caption(position: top)
+
+  show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
+  show figure.where(kind: table): set figure(supplement: i18n("ref-table"))
+  show figure.where(kind: raw): set figure(supplement: i18n("ref-raw"))
+  show math.equation: set math.equation(supplement: i18n("ref-equation"))
+  set heading(supplement: i18n("section"))
   doc
 }
 
@@ -84,6 +90,10 @@
   // Typography
   set par(spacing: 2em)
 
+  // Hierarchical numbering
+  set figure(numbering: hierarchical-numbering("1.1"))
+  set math.equation(numbering: hierarchical-numbering("(1.1)"))
+
   doc
 }
 
@@ -93,13 +103,16 @@
   set page(numbering: "1")
   counter(page).update(1)
 
-  // Setup headers
-  set heading(numbering: "1.1")
-  show heading: set align(left)
+  // Reset figure and math counters per chapter
   show heading.where(level: 1): it => {
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
+
+  // Setup headers
+  set heading(numbering: "1.1")
+  show heading: set align(left)
   let current-top-heading = state("_ght-cth", none)
   set heading(numbering: (..args) => with-inside-heading(is-inside-heading => {
     show: if is-inside-heading {
@@ -191,10 +204,12 @@
 
 /// This style is applied to the figure outline.
 #let figure-outline-style(doc) = {
+  show outline.entry: _outline-entry.with(logical-level: 2)
   doc
 }
 
 #let table-outline-style(doc) = {
+  show outline.entry: _outline-entry.with(logical-level: 2)
   doc
 }
 
@@ -214,10 +229,15 @@
 
 /// This style is applied to the appendix section.
 #let appendix-style(doc) = {
+  reset-listing-counters()
+
   set heading(offset: 1)
 
   // Arabic for text sections = appendix
   set page(numbering: "1")
+
+  set figure(numbering: (..n) => [A.#numbering("1", ..n)])
+  set math.equation(numbering: (..n) => [(A.#numbering("1", ..n))])
 
   doc
 }

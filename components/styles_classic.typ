@@ -1,7 +1,7 @@
 #import "i18n.typ": i18n, i18n-page-counter, i18n-translation
 #import "utils.typ": *
 
-/// This stile is applied to the entire project.
+/// This style is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (top: 6.7cm, bottom: 2.5cm, rest: 3.25cm))
   set text(font: "Times New Roman", size: 12pt)
@@ -9,6 +9,13 @@
   show footnote: set text(size: 0.8em)
   show: line-spacing.with(1.25em)
   show figure.where(kind: table): set figure.caption(position: top)
+
+  show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))
+  show figure.where(kind: table): set figure(supplement: i18n("ref-table"))
+  show figure.where(kind: raw): set figure(supplement: i18n("ref-raw"))
+  show math.equation: set math.equation(supplement: i18n("ref-equation"))
+  set heading(supplement: i18n("section"))
+
   doc
 }
 
@@ -41,7 +48,7 @@
   set page(numbering: "i")
 
   // Setup headings
-  set heading(numbering: none)
+  set heading(numbering: none, supplement: i18n("section"))
   // Default heading style for the whole document
   show heading.where(level: 1): set text(size: 1.6em)
   show heading.where(level: 2): set text(size: 1.25em)
@@ -120,12 +127,17 @@
   counter(page).update(1)
 
   // Setup headings
-  set heading(supplement: i18n("chapter"))
+  show heading.where(level: 1): set heading(supplement: i18n("chapter"))
+  // Reset figure and math counters per chapter
   show heading.where(level: 1): it => {
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
+
   show: _pre-top-heading-numbering.with("1.1")
+  set figure(numbering: hierarchical-numbering("1.1"))
+  set math.equation(numbering: hierarchical-numbering("(1.1)"))
 
   doc
 }
@@ -210,13 +222,16 @@
   // Arabic for text sections = appendix
   set page(numbering: "1")
 
-  set heading(supplement: i18n("appendix"))
+  show heading.where(level: 1): set heading(supplement: i18n("appendix"))
   counter(heading).update(0)
   show heading.where(level: 1): it => {
+    reset-listing-counters()
     colbreak(weak: true)
     it
   }
   show: _pre-top-heading-numbering.with("A.1")
+  set figure(numbering: hierarchical-numbering("A.1"))
+  set math.equation(numbering: hierarchical-numbering("(A.1)"))
 
   doc
 }

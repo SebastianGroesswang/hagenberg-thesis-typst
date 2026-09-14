@@ -4,6 +4,12 @@
 
 #lorem(30)
 
+Reference a:
+
+- Chapter: @introduction_heading
+- Section: @nested_subheading
+- Equation: @bayes_theorem
+
 // Let's show a small table
 #{
   show: figure.with(
@@ -16,5 +22,9 @@
     [Data 3], [Data 4],
   )
 }
+
+$
+  P(A | B) = (P(A) P(B | A)) / P(B)
+$ <bayes_theorem>
 
 #lorem(10)

@@ -1,5 +1,5 @@
 #let should-be-flat = sys.inputs.at("is-flat", default: "false") == "true"
-#let should-be-classic = sys.inputs.at("is-classic", default: "false") == "true"
+#let should-be-classic = sys.inputs.at("is-classic", default: "true") == "true"
 
 #set page(
   paper: "a4",
@@ -17,7 +17,7 @@
   ".pdf"
 }
 
-#let pages = if should-be-classic { (7, 8, 13, 14) } else { (7, 9, 15, 16) }
+#let pages = if should-be-classic { (7, 8, 13, 15) } else { (7, 9, 14, 15) }
 
 #grid(
   columns: if not should-be-flat { (1fr, 1fr) } else { (1fr, 1fr, 1fr, 1fr) },

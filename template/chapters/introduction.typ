@@ -2,10 +2,11 @@
 
 #import "../deps.typ": lq
 
-= Introduction
+= Introduction <introduction_heading>
 
 #lorem(10)
 #{
+  show: it => [#it <introduction_figure>]
   show: figure.with(caption: [An Introduction Figure])
   show: rect
   lq.diagram(
@@ -20,8 +21,10 @@
 
 == Subheading
 
-#lorem(500)
+#lorem(200)
 
-=== Very nested
+Let's reference @introduction_figure here.
+
+=== Very nested <nested_subheading>
 
 ==== Very very nested

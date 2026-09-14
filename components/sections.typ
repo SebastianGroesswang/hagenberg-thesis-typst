@@ -145,6 +145,10 @@
 
   // Content
   context heading(level: 1, i18n-translation("abbreviations", text.lang))
+  show: figure.with(caption: i18n-translation(
+    "abbreviations-table-caption",
+    text.lang,
+  ))
   table(
     columns: (2fr, 7fr),
     table.header(strong(i18n("abbreviation")), strong(i18n("description"))),
@@ -169,7 +173,7 @@
   // Content
   context outline(
     title: i18n-translation("figure-outline", text.lang),
-    target: figure.where(kind: image),
+    target: figure.where(kind: image).or(figure.where(kind: raw)),
   )
 }
 

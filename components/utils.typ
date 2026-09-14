@@ -74,3 +74,14 @@
     return next-pre-heading.location()
   }
 }
+
+#let hierarchical-numbering(style, levels: 1) = (..ns) => {
+  numbering(style, ..counter(heading).get().chunks(levels).first(), ..ns)
+}
+
+#let reset-listing-counters(value: 0) = {
+  counter(figure.where(kind: image)).update(value)
+  counter(figure.where(kind: table)).update(value)
+  counter(figure.where(kind: raw)).update(value)
+  counter(math.equation).update(value)
+}
