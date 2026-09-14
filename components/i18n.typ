@@ -95,6 +95,14 @@
     de: "Master of Science in Engineering",
     en: "Master of Science in Engineering",
   ),
+  "license-cc": (
+    de: [Diese Arbeit wird unter den Bedingungen der Creative Commons Lizenz _Attribution-NonCommercial-NoDerivatives 4.0 International_ (CC BY-NC-ND 4.0) veröffentlicht -- siehe #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[https://creativecommons.org/licenses/by-nc-nd/4.0/].],
+    en: [This work is published under the conditions of the Creative Commons License _Attribution-NonCommercial-NoDerivatives 4.0 International_ (CC BY-NC-ND 4.0) -- see #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[https://creativecommons.org/licenses/by-nc-nd/4.0/].],
+  ),
+  "license-strict": (
+    de: [Alle Rechte vorbehalten.],
+    en: [All rights reserved.],
+  ),
   "campus-hagenberg": (
     de: "Campus Hagenberg",
     en: "Campus Hagenberg",

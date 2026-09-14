@@ -7,13 +7,6 @@
   styles_modern
 } else { styles_classic }
 
-/// Shows the title page.
-#let titlepage-section(
-  cont,
-) = {
-  cont
-}
-
 /// Shows the declaration page with the given style.
 /// - style-preface (): A function that takes the content, styles it and returns a styled content.
 /// - thesis-style (classic, modern): The base style for this section.

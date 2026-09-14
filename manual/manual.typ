@@ -82,7 +82,7 @@ First import the template package:
 #raw(
   strfmt(
     ```typ
-    #import "@preview/easy-hgb-thesis:{version}": full-thesis, titlepage, WORK_TYPES
+    #import "@preview/easy-hgb-thesis:{version}": full-thesis, titlepage, copyright-page, WORK_TYPES, LICENSE_TYPES
     ```.text,
     version: package-metadata.package.version,
   ),
@@ -198,8 +198,27 @@ Omitting the titlepage is as simple as passing *`none`*:
   titlepage: none,
 )
 ```
-=== Citation style
 
+=== Copyright page
+
+An optional copyright page can be added directly by chaining it with the `titlepage` component using a `pagebreak()`. Supported presets are Creative Commons (CC BY-NC-ND 4.0 via `LICENSE_TYPES.cc-by-nc-nd`) and all-rights-reserved (via `LICENSE_TYPES.all-rights-reserved`):
+
+#codly(skips: ((7, 3),))
+```typ
+#show: full-thesis.with(
+  titlepage: {
+    titlepage(
+      "Computer Science",
+      "Dr. Max Mentorman",
+      work-type: WORK_TYPES.bachelor-thesis,
+    )
+    pagebreak()
+    copyright-page(LICENSE_TYPES.cc-by-nc-nd)
+  },
+)
+```
+
+=== Citation style
 
 Depending on your needs, your mentor and field of work, you might need to change the citation style. Luckily, _Typst_ supports pretty much all citation styles out of the box. When providing the `bibliography` template parameter, also add your desired citation style: #cite(<src_lodish-molecular-cell-biology>)
 

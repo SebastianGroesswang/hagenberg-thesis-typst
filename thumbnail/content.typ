@@ -1,6 +1,9 @@
 #let is-classic = eval(sys.inputs.at("is-classic", default: "true"))
 
-#import "../lib.typ": THESIS_STYLE, WORK_TYPES, full-thesis, titlepage
+#import "../lib.typ": (
+  LICENSE_TYPES, THESIS_STYLE, WORK_TYPES, copyright-page, full-thesis,
+  titlepage,
+)
 
 #set document(
   title: "Thesis Title",
@@ -18,11 +21,15 @@
   thesis-style: if is-classic { THESIS_STYLE.classic } else {
     THESIS_STYLE.modern
   },
-  titlepage: titlepage(
-    "Computer Science",
-    "Dr. Max Mentorman",
-    work-type: WORK_TYPES.bachelor-thesis,
-  ),
+  titlepage: {
+    titlepage(
+      "Computer Science",
+      "Dr. Max Mentorman",
+      work-type: WORK_TYPES.bachelor-thesis,
+    )
+    pagebreak()
+    copyright-page(LICENSE_TYPES.cc-by-nc-nd)
+  },
   acknowledgement: include "../template/chapters/acknowledgement.typ", // Can be deleted if not required
   kurzfassung: include "../template/chapters/kurzfassung.typ",
   abstract: include "../template/chapters/abstract.typ",

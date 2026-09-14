@@ -33,6 +33,7 @@
 /// For highly advanced usecases, you can also clone the template repository from #link("https://github.com/timerertim/hagenberg-thesis-template", "GitHub") and adjust it as needed for your project requirements.
 ///
 ///
+/// - titlepage (content): The title page to display. Usually created via the `titlepage(...)` function.
 /// - include-tableoutline (auto, true, false): `auto` includes a table outline if there is at least one table in the document,`true` forces to display an outline and `false` deactivates entirely.
 /// - include-figureoutline (auto, true, false): `auto` includes a figure outline if there is at least one figure in the document,`true` forces to display an outline and `false` deactivates entirely.
 /// - include-declaration (true, false): `true` includes a declaration page, `false` deactivates entirely.
@@ -102,10 +103,11 @@
   show: global-style
   // Show titlepage
   if titlepage != none {
-    titlepage-section(titlepage)
+    titlepage
+    pagebreak(weak: true)
   }
 
-  // Setup document-wide styles that cover normal text content (everything apart title page)
+  // Setup document-wide styles that cover normal text content (everything apart title page and copyright page)
   show: default-styles.document-style
   show: document-style
 
