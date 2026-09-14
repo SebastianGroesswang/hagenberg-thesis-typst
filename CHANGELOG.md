@@ -26,7 +26,7 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed
 - Heading page location numbers in modern style outline
 - Classic style heading off-by-one location bug from column break
-- Heading with i18n/context hidden in PDF outline (#1 by @MartinHanl)
+- Heading with i18n/context hidden in PDF outline ([#1](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/1) by @MartinHanl)
 
 ## [0.2.1] - 2026-08-14
 
