@@ -2,7 +2,9 @@
 // Please submit any issues or feature requests to https://github.com/TimerErTim/hagenberg-thesis-typst/issues
 // Refer to the documentation at https://github.com/TimerErTim/hagenberg-thesis-typst/tree/main/easy-hgb-thesis-manual.pdf for more information.
 
-#import "@preview/easy-hgb-thesis:0.2.2": full-thesis, titlepage, WORK_TYPES
+#import "@preview/easy-hgb-thesis:0.2.2": (
+  LICENSE, WORK_TYPES, full-thesis, titlepage,
+)
 
 // We configure the document data here, this will be in the title page and others
 #set document(

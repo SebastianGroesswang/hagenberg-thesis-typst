@@ -83,6 +83,18 @@
     de: "zur Erlangung des akademischen Grades\nBachelor of Science in Engineering",
     en: "to obtain the academic degree of\nBachelor of Science in Engineering",
   ),
+  "degree-goal-prefix": (
+    de: "zur Erlangung des akademischen Grades",
+    en: "to obtain the academic degree of",
+  ),
+  "degree-bachelor": (
+    de: "Bachelor of Science in Engineering",
+    en: "Bachelor of Science in Engineering",
+  ),
+  "degree-master": (
+    de: "Master of Science in Engineering",
+    en: "Master of Science in Engineering",
+  ),
   "campus-hagenberg": (
     de: "Campus Hagenberg",
     en: "Campus Hagenberg",

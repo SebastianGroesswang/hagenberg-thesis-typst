@@ -180,13 +180,13 @@ This information is embedded in the metadata of the compiled PDF. It is also pic
 
 The titlepage is customizable via the `titlepage` template parameter. The template simply prepends the titlepage to the document while applying `global-style` (without `document-style`).
 
-#codly(skips: ((8, 3),))
+#codly(skips: ((7, 3),))
 ```typ
 #show: full-thesis.with(
   titlepage: titlepage(
     "Computer Science",  // Course of study
     "Dr. Max Mentorman", // Mentor name
-    work-type: WORK_TYPES.bachelor-thesis,
+    work-type: WORK_TYPES.bachelor-thesis, // or WORK_TYPES.master-thesis
   ),
 )
 ```
