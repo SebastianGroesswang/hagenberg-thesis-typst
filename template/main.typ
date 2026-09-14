@@ -2,7 +2,9 @@
 // Please submit any issues or feature requests to https://github.com/TimerErTim/hagenberg-thesis-typst/issues
 // Refer to the documentation at https://github.com/TimerErTim/hagenberg-thesis-typst/tree/main/easy-hgb-thesis-manual.pdf for more information.
 
-#import "@preview/easy-hgb-thesis:0.2.2": full-thesis, titlepage, WORK_TYPES
+#import "@preview/easy-hgb-thesis:0.2.2": (
+  LICENSE_TYPES, WORK_TYPES, copyright-page, full-thesis, titlepage,
+)
 
 // We configure the document data here, this will be in the title page and others
 #set document(
@@ -20,11 +22,16 @@
 #import "abbrev.typ": abbr
 // Wrap the document in the full-thesis template
 #show: full-thesis.with(
-  titlepage: titlepage(
-    "Computer Science",
-    "Dr. Max Mentorman",
-    work-type: WORK_TYPES.bachelor-thesis,
-  ),
+  titlepage: {
+    titlepage(
+      "Computer Science",
+      "Dr. Max Mentorman",
+      work-type: WORK_TYPES.bachelor-thesis,
+    )
+    // Optional copyright page:
+    // pagebreak()
+    // copyright-page(LICENSE_TYPES.cc-by-nc-nd)
+  },
   acknowledgement: include "chapters/acknowledgement.typ", // Can be deleted if not required
   kurzfassung: include "chapters/kurzfassung.typ",
   abstract: include "chapters/abstract.typ",

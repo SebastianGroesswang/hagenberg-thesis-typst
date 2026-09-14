@@ -1,7 +1,7 @@
 #import "utils.typ": apply-sans-font
 #import "i18n.typ": i18n, i18n-translation
 
-#show: apply-sans-font
+#show: apply-sans-font.with(other-fonts: ("Verdana",))
 #set text(size: 10pt)
 #show heading.where(level: 1): it => {
   set text(size: 11pt)

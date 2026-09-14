@@ -21,7 +21,11 @@
 
 == Subheading
 
-#lorem(200)
+#lorem(50)
+
+#lorem(70)
+
+#lorem(30)
 
 Let's reference @introduction_figure here.
 

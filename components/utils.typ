@@ -12,13 +12,15 @@
 }
 
 #let sans-fonts = state("_eht-sans-fonts", (
-  "verdana",
-  "dejavu sans",
-  "arial",
+  "Libertinus Sans",
+  "New Computer Modern Sans",
+  "Inter",
+  "Arial",
 ))
 
-#let apply-sans-font(body) = context {
+#let apply-sans-font(other-fonts: (), body) = context {
   let fonts = {
+    other-fonts
     sans-fonts.get()
     if type(text.font) == array { text.font } else { (text.font,) }
   }

@@ -4,10 +4,17 @@
 /// This stile is applied to the entire project.
 #let global-style(doc) = {
   set page(paper: "a4", margin: (bottom: 2cm, rest: 2.5cm))
-  set text(font: "Arial", size: 11pt)
-  set par(justify: true)
-  show footnote: set text(size: 0.8em)
+  set text(size: 11pt)
+  show: apply-sans-font
+  set par(
+    justify: true,
+    linebreaks: "optimized",
+    justification-limits: (
+      tracking: (min: -0.05em, max: 0.05em),
+    ),
+  )
   show: line-spacing.with(1.25em)
+  show footnote: set text(size: 0.8em)
   show figure.where(kind: table): set figure.caption(position: top)
 
   show figure.where(kind: image): set figure(supplement: i18n("ref-figure"))

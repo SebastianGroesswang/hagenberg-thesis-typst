@@ -12,14 +12,20 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Localized reference supplements and abbreviations (`Abb.`, `Tab.`, `Gl.`, `Prog.`)
 - Classic chapter outline shows acknowledgment
 - Classic style includes abbreviations inside appendix
+- Optional `copyright-page` with `LICENSE_TYPES` presets (CC BY-NC-ND 4.0, all-rights-reserved) and custom license content ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- Optional title page options `degree`, `study-program`, `place-of-study`, and `submission-date: auto` ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- i18n for degree names, license text, and Austrian German month–year dates on the title page ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- Declaration text that the printed copy matches the submitted electronic document (DE/EN) ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+
+### Changed
+- OSS-friendly default sans-serif fonts: `New Computer Modern Sans`, `Libertinus Sans`, `Inter`, `Arial` ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- Built-in styles no longer force Times New Roman (classic) or Arial (modern) on body text; serif uses Typst’s default fonts ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
+- Classic and modern styles: tighter academic paragraph and float spacing ([#9](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/9))
 
 ### Fixed
 - Heading page location numbers in modern style outline
 - Classic style heading off-by-one location bug from column break
 - Heading with i18n/context hidden in PDF outline (#1 by @MartinHanl)
-
-### Removed
-- Dead legacy style code
 
 ## [0.2.1] - 2026-08-14
 

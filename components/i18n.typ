@@ -83,6 +83,26 @@
     de: "zur Erlangung des akademischen Grades\nBachelor of Science in Engineering",
     en: "to obtain the academic degree of\nBachelor of Science in Engineering",
   ),
+  "degree-goal-prefix": (
+    de: "zur Erlangung des akademischen Grades",
+    en: "to obtain the academic degree of",
+  ),
+  "degree-bachelor": (
+    de: "Bachelor of Science in Engineering",
+    en: "Bachelor of Science in Engineering",
+  ),
+  "degree-master": (
+    de: "Master of Science in Engineering",
+    en: "Master of Science in Engineering",
+  ),
+  "license-cc": (
+    de: [Diese Arbeit wird unter den Bedingungen der Creative Commons Lizenz _Attribution-NonCommercial-NoDerivatives 4.0 International_ (CC BY-NC-ND 4.0) veröffentlicht -- siehe #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[https://creativecommons.org/licenses/by-nc-nd/4.0/].],
+    en: [This work is published under the conditions of the Creative Commons License _Attribution-NonCommercial-NoDerivatives 4.0 International_ (CC BY-NC-ND 4.0) -- see #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[https://creativecommons.org/licenses/by-nc-nd/4.0/].],
+  ),
+  "license-strict": (
+    de: [Alle Rechte vorbehalten.],
+    en: [All rights reserved.],
+  ),
   "campus-hagenberg": (
     de: "Campus Hagenberg",
     en: "Campus Hagenberg",
@@ -124,8 +144,8 @@
     en: "Declaration",
   ),
   "declaration-content": (
-    de: "Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt.",
-    en: "I hereby declare and confirm that this thesis is entirely the result of my own original work. Where other sources of information have been used, they have been indicated as such and properly acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.",
+    de: "Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt. Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.",
+    en: "I hereby declare and confirm that this thesis is entirely the result of my own original work. Where other sources of information have been used, they have been indicated as such and properly acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere. This printed copy is identical to the submitted electronic version.",
   ),
   "ref-figure": (
     de: "Abb.",
@@ -178,6 +198,21 @@
   ]
 }
 
+#let _austrian-months = (
+  "Jänner",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
+)
+
 #let i18n-date-short(date) = context {
   let lang = text.lang
   if lang == "de" [
@@ -187,11 +222,19 @@
   ]
 }
 
+#let i18n-date-month-year(date) = context {
+  let lang = text.lang
+  if lang == "de" [
+    #_austrian-months.at(date.month() - 1) #date.year()
+  ] else [
+    #date.display("[month repr:long] [year]")
+  ]
+}
+
 #let i18n-date-long(date) = context {
   let lang = text.lang
   if lang == "de" [
-    #import "@preview/datify:1.3.0": display-date
-    #display-date(date, pattern: "d. MMMM yyyy")
+    #date.day(). #_austrian-months.at(date.month() - 1) #date.year()
   ] else [
     #date.display("[month repr:long] [day], [year]")
   ]

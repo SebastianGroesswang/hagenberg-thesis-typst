@@ -82,7 +82,7 @@ First import the template package:
 #raw(
   strfmt(
     ```typ
-    #import "@preview/easy-hgb-thesis:{version}": full-thesis, titlepage, WORK_TYPES
+    #import "@preview/easy-hgb-thesis:{version}": full-thesis, titlepage, copyright-page, WORK_TYPES, LICENSE_TYPES
     ```.text,
     version: package-metadata.package.version,
   ),
@@ -180,13 +180,13 @@ This information is embedded in the metadata of the compiled PDF. It is also pic
 
 The titlepage is customizable via the `titlepage` template parameter. The template simply prepends the titlepage to the document while applying `global-style` (without `document-style`).
 
-#codly(skips: ((8, 3),))
+#codly(skips: ((7, 3),))
 ```typ
 #show: full-thesis.with(
   titlepage: titlepage(
     "Computer Science",  // Course of study
     "Dr. Max Mentorman", // Mentor name
-    work-type: WORK_TYPES.bachelor-thesis,
+    work-type: WORK_TYPES.bachelor-thesis, // or WORK_TYPES.master-thesis
   ),
 )
 ```
@@ -198,8 +198,27 @@ Omitting the titlepage is as simple as passing *`none`*:
   titlepage: none,
 )
 ```
-=== Citation style
 
+=== Copyright page
+
+An optional copyright page can be added directly by chaining it with the `titlepage` component using a `pagebreak()`. Supported presets are Creative Commons (CC BY-NC-ND 4.0 via `LICENSE_TYPES.cc-by-nc-nd`) and all-rights-reserved (via `LICENSE_TYPES.all-rights-reserved`):
+
+#codly(skips: ((7, 3),))
+```typ
+#show: full-thesis.with(
+  titlepage: {
+    titlepage(
+      "Computer Science",
+      "Dr. Max Mentorman",
+      work-type: WORK_TYPES.bachelor-thesis,
+    )
+    pagebreak()
+    copyright-page(LICENSE_TYPES.cc-by-nc-nd)
+  },
+)
+```
+
+=== Citation style
 
 Depending on your needs, your mentor and field of work, you might need to change the citation style. Luckily, _Typst_ supports pretty much all citation styles out of the box. When providing the `bibliography` template parameter, also add your desired citation style: #cite(<src_lodish-molecular-cell-biology>)
 
@@ -229,6 +248,8 @@ Many users might want to change the font from the default base style. For this, 
 #show: full-thesis.with(
   document-style: it => {
     set text(font: "Times New Roman", size: 12pt)
+    show raw: set text(font: "JetBrains Mono")
+    show math.equation: set text(font: "Libertinus Math")
     it
   },
 )
@@ -432,13 +453,9 @@ You will find a list of my personal recommended and useful third party Typst pac
 ]
 
 #package-recommend(
-  "zero",
-  "https://typst.app/universe/package/zero",
-)[configurable scientific number formatting; basically a requirement for scientific writing]
-#package-recommend(
   "cetz",
   "https://typst.app/universe/package/cetz",
-  "semi-low-level drawing library, very powerful; often foundation for other drawing packages",
+  "drawing and plotting library; very powerful and versatile, often the foundation for other diagram packages",
 )
 #package-recommend(
   "fletcher",
@@ -448,6 +465,30 @@ You will find a list of my personal recommended and useful third party Typst pac
   "lilaq",
   "https://typst.app/universe/package/lilaq",
 )[easy to use plotting library with sane defaults and lots of customization options]
+#package-recommend(
+  "bytefield",
+  "https://typst.app/universe/package/bytefield",
+)[network protocol headers, packet structures, and memory byte/bit layout diagrams]
+#package-recommend(
+  "digidraw",
+  "https://typst.app/universe/package/digidraw",
+)[digital timing diagrams and digital logic waveforms]
+#package-recommend(
+  "booktabs",
+  "https://typst.app/universe/package/booktabs",
+)[clean, publication-quality tables using toprule, midrule, and bottomrule rules]
+#package-recommend(
+  "zero",
+  "https://typst.app/universe/package/zero",
+)[configurable scientific number formatting; basically a requirement for scientific writing]
+#package-recommend(
+  "fancy-units",
+  "https://typst.app/universe/package/fancy-units",
+)[typesetting physical quantities, numbers with units, and SI notation]
+#package-recommend(
+  "lovelace",
+  "https://typst.app/universe/package/lovelace",
+)[algorithm pseudocode typesetting with line numbering and customizable syntax]
 #package-recommend(
   "codly",
   "https://typst.app/universe/package/codly",
