@@ -178,6 +178,21 @@
   ]
 }
 
+#let _austrian-months = (
+  "Jänner",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
+)
+
 #let i18n-date-short(date) = context {
   let lang = text.lang
   if lang == "de" [
@@ -187,11 +202,19 @@
   ]
 }
 
+#let i18n-date-month-year(date) = context {
+  let lang = text.lang
+  if lang == "de" [
+    #_austrian-months.at(date.month() - 1) #date.year()
+  ] else [
+    #date.display("[month repr:long] [year]")
+  ]
+}
+
 #let i18n-date-long(date) = context {
   let lang = text.lang
   if lang == "de" [
-    #import "@preview/datify:1.3.0": display-date
-    #display-date(date, pattern: "d. MMMM yyyy")
+    #date.day(). #_austrian-months.at(date.month() - 1) #date.year()
   ] else [
     #date.display("[month repr:long] [day], [year]")
   ]
