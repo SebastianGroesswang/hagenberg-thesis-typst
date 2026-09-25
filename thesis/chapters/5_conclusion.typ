@@ -1,6 +1,6 @@
 // Demonstration chapter, will be completely replaced with your own chapter composition
 
-= Conclusion
+= Conclusion <conclusion_heading>
 
 #lorem(30)
 

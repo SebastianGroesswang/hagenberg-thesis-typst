@@ -8,9 +8,9 @@
 
 // We configure the document data here, this will be in the title page and others
 #set document(
-  title: "Thesis Title",
+  title: "Identification of Modifications in Open Searches",
   // Or single string: "Author Name"
-  author: ("Author Name", "Name Two", "Name Three"),
+  author: ("Sebastian Grösswang"),
   // Keep Short and Simple, no abstract
   description: "Thesis Description",
   // Optional, can be deleted.
@@ -24,19 +24,18 @@
 #show: full-thesis.with(
   titlepage: {
     titlepage(
-      "Computer Science",
-      "Dr. Max Mentorman",
+      "Bioinformatics and Computational Biology",
+      "Prof. Viktoria Dorfer",
       work-type: WORK_TYPES.bachelor-thesis,
     )
     // Optional copyright page:
     // pagebreak()
     // copyright-page(LICENSE_TYPES.cc-by-nc-nd)
   },
-  acknowledgement: include "chapters/acknowledgement.typ", // Can be deleted if not required
-  kurzfassung: include "chapters/kurzfassung.typ",
-  abstract: include "chapters/abstract.typ",
-  preamble: include "chapters/preamble.typ", // Can be deleted if not required
-  appendix: include "chapters/appendix.typ", // Can be deleted if not required
+  acknowledgement: include "chapters/general/acknowledgement.typ", // Can be deleted if not required
+  kurzfassung: include "chapters/general/kurzfassung.typ",
+  abstract: include "chapters/general/abstract.typ",
+  appendix: include "chapters/general/appendix.typ", // Can be deleted if not required
   abbreviations: abbr, // Can be deleted if you don't need abbreviations
   bibl: bibliography("bib.yaml"), // Can be replaced with a BibLaTex file,
 
@@ -53,6 +52,9 @@
 
 // Include your chapters here, content can also be written here directly but
 // may become confusing and hard to maintain with very long contents
-#include "chapters/introduction.typ"
-#include "chapters/methodology.typ"
-#include "chapters/conclusion.typ"
+#include "chapters/1_introduction.typ"
+#include "chapters/2_fundamentals.typ"
+#include "chapters/3_concept.typ"
+#include "chapters/4_implementation.typ"
+//#include "chapters/methodology.typ"
+#include "chapters/5_conclusion.typ"
