@@ -37,7 +37,7 @@
   abstract: include "chapters/general/abstract.typ",
   appendix: include "chapters/general/appendix.typ", // Can be deleted if not required
   abbreviations: abbr, // Can be deleted if you don't need abbreviations
-  bibl: bibliography("bib.yaml"), // Can be replaced with a BibLaTex file,
+  bibl: bibliography(("related-work/zotero.bib")), // Can be replaced with a BibLaTex file,
 
   // Demonstration of how to apply custom styles to sections, can be deleted if not required.
   content-style: it => {

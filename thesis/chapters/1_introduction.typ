@@ -2,6 +2,9 @@
 
 #import "../deps.typ": lq // lq is a dependency for diagrams, can be deleted if not required
 
+//#bibliography("../related-work/PTMMiner.bib")
+//#bibliography("../related-work/zotero.bib")
+
 = Introduction <introduction_heading>
 
 // #lorem(10)
@@ -17,3 +20,6 @@
 //   )
 // }
 
+This is a Indruction chapter, which will be completely replaced with your own chapter composition. You can write your content directly here or include it from other files. The content can be structured using headings, paragraphs, lists, figures, tables, and more. [@an_ptminer_2019]
+
+This is a Indruction chapter, which will be completely replaced with your own chapter composition. You can write your content directly here or include it from other files. The content can be structured using headings, paragraphs, lists, figures, tables, and more. [@jiang_comprehensive_2024]

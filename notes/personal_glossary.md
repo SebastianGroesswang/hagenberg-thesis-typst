@@ -10,3 +10,5 @@
 | Open search  | Search allowing broad precursor mass differences                | Produces the modification candidates to annotate | Lecture / source       |
 | Localisation | Assignment of a modification to a peptide position              | A key source of ambiguity and ranking evidence   | Lecture / source       |
 | Unimod       | Modification database                                           | Candidate-modification source                    | Database documentation |
+|iso electric focusing | | | youtube lecture |
+| nebulisation | | | youtube lecture|
