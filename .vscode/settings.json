@@ -3,4 +3,7 @@
     "tinymist.typstExtraArgs": [
         "--package-path", "${workspaceFolder}/local-packages/"
     ],
+    "tinymist.fontPaths": [
+        "${workspaceFolder}/thesis/fonts"
+    ],
 }
