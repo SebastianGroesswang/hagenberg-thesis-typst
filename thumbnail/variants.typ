@@ -17,7 +17,7 @@
   ".pdf"
 }
 
-#let pages = if should-be-classic { (8, 9, 14, 16) } else { (8, 10, 16, 17) }
+#let pages = if should-be-classic { (8, 10, 16, 21) } else { (8, 10, 16, 17) }
 
 #grid(
   columns: if not should-be-flat { (1fr, 1fr) } else { (1fr, 1fr, 1fr, 1fr) },

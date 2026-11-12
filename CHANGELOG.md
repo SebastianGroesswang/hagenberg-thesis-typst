@@ -7,6 +7,32 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Generative AI Documentation chapter ([#22](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/22))
+
+### Changed
+- Declaration updated according to new post-gen-AI guidelines ([#22](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/22))
+
+### Fixed
+- Classic: Multipage sections with no heading numbering (like "Contents") crash due to relying on `heading.numbering` ([#23](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/23))
+
+## [0.2.3] - 2026-10-07
+
+### Added
+- Classic: Add running headers so subsequent pages of new chapters show more compact margin ([#17](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/17), [#19](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/19))
+
+### Changed
+- Classic: Paragraph spacing increased to 1.2em ([#16](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/14))
+- Classic: Chapter outline top-level heading spacing reduced to 6mm ([#18](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/18))
+- Classic: Chapter outline sub-level heading to numbering gap increased to 0.75em ([#18](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/18))
+- Reduce heading text sizes for better readability ([#19](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/19))
+- Modern: Adjust spacings for better readability ([#19](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/19))
+- Modern: Page numbering follows coherent flow ([#19](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/19))
+- Modern: Headings in appendix are aligned left ([#19](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/19))
+
+### Fixed
+- Abbreviation section in `classic` style annotates table correctly ([#13](https://github.com/TimerErTim/hagenberg-thesis-typst/pull/13))
+
 ## [0.2.2] - 2026-09-16
 
 ### Added
@@ -71,7 +97,8 @@ Project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 - Switch license to MIT-0
 
-[Unreleased]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.2.3...HEAD
+[0.2.3]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/TimerErTim/hagenberg-thesis-typst/compare/v0.1.0...v0.2.0
